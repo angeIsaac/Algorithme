@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Sentence</title>
+</head>
+<body>
+    <script>
+        function analyzeSentence() {
+            alert("Veuillez entrer une phrase se terminant par un point (.). Appuyez sur 'Annuler' pour terminer.");
+            
+            let phrase = "";
+            let char = "";
+
+            // Lire les caractères un par un
+            while (char !== ".") {
+                char = prompt("Entrez un caractère :");
+                if (char !== null) {
+                    phrase += char;
+                }
+                if (char === ".") {
+                    break;
+                }
+            }
+
+            // Calcul du nombre de caractères (y compris le point)
+            const numCharacters = phrase.length;
+
+            // Calcul du nombre de mots (en utilisant les espaces et le point pour délimiter les mots)
+            const words = phrase.slice(0, -1).trim().split(/\s+/);
+            const numWords = words.length;
+
+            // Calcul du nombre de voyelles
+            const vowels = "aeiouyAEIOUY";
+            let numVowels = 0;
+            for (let i = 0; i < phrase.length; i++) {
+                if (vowels.includes(phrase[i])) {
+                    numVowels += 1;
+                }
+            }
+
+            console.log(`Nombre de caractères : ${numCharacters}`);
+            console.log(`Nombre de mots : ${numWords}`);
+            console.log(`Nombre de voyelles : ${numVowels}`);
+        }
+
+        // Exécuter la fonction
+        analyzeSentence();
+    </script>
+</body>
+</html>
